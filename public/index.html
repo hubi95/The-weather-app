@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather app</title>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQLMmVrKnwVC2Qgc0EnZslhpJQB_auk1k&libraries=places&callback=initMap">
+    </script>
+  <script defer type="module" src="app.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="wrapper">
+    </div>
+  </header>
+  <main>
+    <section class="general-info">
+      <div class="content">
+        <h1>Enter a location</h1>
+        <h2>To find a Weather</h2>
+        <div class="city-search-conatiner">
+          <input type="text" class="city-search" data-city-search placeholder="Enter Location">
+        </div>
+      </div>
+    </section>
+    <section class="weather-simple-details">
+      <div class="detail">
+        <div class="value-tilte">Temperature</div>
+        <div class="value">/</div>
+      </div>
+      <div class="detail">
+        <div class="value-tilte">Humidity</div>
+        <div class="value">/</div>
+      </div>
+      <div class="detail">
+        <div class="value-tilte">Pressure</div>
+        <div class="value">/</div>
+      </div>
+      <div class="detail">
+        <div class="value-tilte">Wind Speed</div>
+        <div class="value">/</div>
+      </div>
+      <div class="detail">
+        <div class="value-tilte">Precipitation volume, mm</div>
+        <div class="value">/</div>
+      </div>
+      <div class="detail">
+        <div class="value-tilte">Visibility</div>
+        <div class="value">/</div>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+</body>
+
+</html>
