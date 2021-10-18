@@ -1,6 +1,6 @@
-The weather app
+## The weather app
 
-============
+---
 
 This is a simple weather app based on Firebase and OpenWeatherMap API.
 The application interface is under construction.
