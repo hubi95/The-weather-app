@@ -6,55 +6,67 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather app</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQLMmVrKnwVC2Qgc0EnZslhpJQB_auk1k&libraries=places&callback=initMap">
     </script>
   <script defer type="module" src="app.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header>
-    <div class="wrapper">
-    </div>
-  </header>
-  <main>
-    <section class="general-info">
+  <main class="grid wrapper">
+
+    <section class="general-info round-corners main-wrapper">
       <div class="content">
-        <h1>Enter a location</h1>
-        <h2>To find a Weather</h2>
+        <h1 data-summary>Enter a location</h1>
+        <h3 data-location>To find a Weather</h3>
         <div class="city-search-conatiner">
+          <i class="fas fa-search-location"></i>
           <input type="text" class="city-search" data-city-search placeholder="Enter Location">
         </div>
+        <button class="round-corners geo-button"><i class="fas fa-map-marked-alt"></i>See weather near you</button>
       </div>
+
     </section>
-    <section class="weather-simple-details">
+    <section class="weather-simple-details round-corners main-wrapper">
       <div class="detail">
-        <div class="value-tilte">Temperature</div>
-        <div class="value">/</div>
+        <div class="value-tilte">Temperature °C</div>
+        <div class="value" data-temperature>/</div>
       </div>
       <div class="detail">
-        <div class="value-tilte">Humidity</div>
-        <div class="value">/</div>
+        <div class="value-tilte">Humidity %</div>
+        <div class="value" data-humidity>/</div>
       </div>
       <div class="detail">
-        <div class="value-tilte">Pressure</div>
-        <div class="value">/</div>
+        <div class="value-tilte">Pressure hPa</div>
+        <div class="value" data-pressure>/</div>
       </div>
       <div class="detail">
-        <div class="value-tilte">Wind Speed</div>
-        <div class="value">/</div>
+        <div class="value-tilte">Wind Speed meter/sec</div>
+        <div class="value" data-windSpeed>/</div>
       </div>
       <div class="detail">
         <div class="value-tilte">Precipitation volume, mm</div>
-        <div class="value">/</div>
+        <div class="value" data-precipitationV>/</div>
       </div>
       <div class="detail">
-        <div class="value-tilte">Visibility</div>
-        <div class="value">/</div>
+        <div class="value-tilte">Visibility metres</div>
+        <div class="value" data-visibility>/</div>
       </div>
     </section>
   </main>
-  <footer></footer>
 </body>
 
 </html>
