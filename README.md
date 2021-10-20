@@ -1,14 +1,14 @@
 ## The weather app
 ---
-This project is an weather app based on google cloud services and OpenWeatherMap API.
+This project is an weather app based on Google Cloud Platform and OpenWeatherMap API.
 
-Firebase is the main core and it's used for hosting and linking all services in sync.
+Firebase project is the main core and it's used for hosting and linking all services in sync.
 Cloud functions to pair with simple REST API written with Express.js is used to get weather data from OpenWeatherMap API.
 
-It work like this: If you type in city into search area you get latitude and longitude from G Places API.
+It work like this: If you type in city into search area and choose one from a list, you get latitude and longitude from G Places API.
 You can also simply use button to get you current position thanks to build in Geolocation API.
-Then "getWeatherData" function is triggered to make a call to REST API hosted on Cloud functions which then get the weather data from OWM API,
-send if back to user's browser app and store it in sessionStorage to render it later.
+Then "getWeatherData" function is triggered on client side to make a call to REST API hosted on Cloud functions which then get the weather data from OWM API,
+send it back to user's browser app and store it in sessionStorage to render it later.
 
 The application interface is still under construction.
 For now you can search for city of your choice or use geolocation and see simple set of current weather data.
