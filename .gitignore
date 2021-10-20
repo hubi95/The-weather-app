@@ -72,3 +72,4 @@ remoteconfig.template.json
 storage.rules
 functions/package-lock.json
 functions/package.json
+.runtimeconfig.json
