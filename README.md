@@ -1,6 +1,6 @@
 ## The weather app
 ---
-This project is an weather app based on Google Cloud Platform and OpenWeatherMap API.
+This project is a weather app based on Google Cloud Platform and OpenWeatherMap API.
 
 Firebase project is the main core and it's used for hosting and linking all services in sync.
 Cloud functions to pair with simple REST API written with Express.js is used to get weather data from OpenWeatherMap API.
