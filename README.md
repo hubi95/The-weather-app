@@ -13,11 +13,15 @@ send it back to user's browser app and store it in sessionStorage to render it l
 OWM API key is stored on server side as a cloud environment variable for security reason and to not abuse it.
 
 The application interface is still under construction.
-For now you can search for city of your choice or use geolocation and see simple set of current weather data.
+For now you can search for city of your choice or use geolocation and see simple set of current weather data, for today, one week and 48 hours(on a chart).
+I used Figma to prototype some of interface elements and then implemented them in css styles.
+For chart I used Chart.js library.
 
 ---
 Here is link to my project preview [Link to The weather app](https://weather-app-3a7ac.web.app/)
 You can read about the API here [OpenWeatherMap API](https://openweathermap.org/api/one-call-api)
+Here is link to Chart.js Doc [Chart.js](https://www.chartjs.org/docs/3.6.0/)
+
 
 ---
 ## License
