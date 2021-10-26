@@ -19,6 +19,8 @@ For now you can search for city of your choice or use geolocation and see simple
 I used Figma to prototype some of interface elements and then implemented them in css styles.
 For chart I used Chart.js library.
 
+If you have any problems with data to load on screen, please disable any blockers on your browser, or use private mode if you don't want to disable blockers manualy :)
+
 ---
 Here is link to my project preview [Link to The weather app](https://weather-app-3a7ac.web.app/)
 You can read about the API here [OpenWeatherMap API](https://openweathermap.org/api/one-call-api)
