@@ -21,6 +21,9 @@ const functions = getFunctions(firebaseApp);
 // const db = getFirestore(firebaseApp);
 // const auth = getAuth(firebaseApp);
 
+let myChart = null;
+document.querySelector('input').focus();
+
 const searchElement = document.querySelector('[data-city-search]');
 
 const searchBox = new google.maps.places.SearchBox(searchElement);
@@ -165,12 +168,13 @@ const renderWeekWeather = (weatherData) => {
 
 };
 
-const renderCharts = (weatherData) => {
+const getDataForChart = (weatherData) => {
     const hourly = weatherData.hourly;
     const temp = [];
     const hours = [];
-
     hourly.forEach(element => {
+
+
         let hour = new Date(element.dt * 1000).getHours();
 
         if (hour === 0) {
@@ -180,100 +184,120 @@ const renderCharts = (weatherData) => {
         hours.push(hour);
 
         temp.push(Math.round(element.temp));
-
     });
+    return [temp, hours];
+};
+
+const renderCharts = (weatherData) => {
+    let dataForChart = getDataForChart(weatherData);
+    const temp = dataForChart[0];
+    const hours = dataForChart[1];
 
     let maxTempScale = Math.max(...temp) + 3;
     let minTempScale = Math.min(...temp) - 3;
 
-    const ctx = document.getElementById('myChart').getContext('2d');
 
-    const gradient = ctx.createLinearGradient(0, 0, 0, 500);
-    gradient.addColorStop(0, 'RGBA(243,156,18,1)');
-    gradient.addColorStop(0.5, 'RGBA(46,204,113,1)');
-    gradient.addColorStop(1, 'RGBA(32,169,237,1)');
+    if (myChart == null) {
+        const ctx = document.getElementById('myChart').getContext('2d');
 
-    const underLineGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    underLineGradient.addColorStop(0, 'RGBA(255,255,255,1)');
-    underLineGradient.addColorStop(1, 'RGBA(255,255,255,0.1)');
+        const gradient = ctx.createLinearGradient(0, 30, 0, 300);
+        gradient.addColorStop(0.2, 'RGBA(255,127,80,1)');
+        gradient.addColorStop(0.5, 'RGBA(46,204,113,1)');
+        gradient.addColorStop(0.8, 'RGBA(32,169,237,1)');
 
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: hours,
-            datasets: [{
-                label: 'Temp 48h',
-                data: temp,
-                backgroundColor: underLineGradient,
-                borderColor: gradient,
-                borderWidth: 3,
-                fill: false,
-                cubicInterpolationMode: 'monotone',
-                tension: 0.9,
-                pointRadius: 0,
-                fill: true,
-            }]
-        },
-        plugins: [ChartDataLabels],
-        options: {
-            aspectRatio: 10 / 3,
-            responsive: true,
-            scales: {
-                y: {
-                    max: maxTempScale,
-                    min: minTempScale,
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        display: false, //this will remove only the label
-                    },
-                    grid: {
-                        display: false,
-                    },
-                },
-                x: {
-                    ticks: {
-                        // Include a dollar sign in the ticks
-                        callback: function (value, index, values) {
-                            return this.getLabelForValue(value) + ':00';
+        const underLineGradient = ctx.createLinearGradient(0, 0, 0, 300);
+        underLineGradient.addColorStop(0, 'RGBA(255,255,255,1)');
+        underLineGradient.addColorStop(0.9, 'RGBA(255,255,255,0.1)');
+
+        myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: hours,
+                datasets: [{
+                    label: 'Temp 48h',
+                    data: temp,
+                    backgroundColor: underLineGradient,
+                    borderColor: gradient,
+                    borderWidth: 3,
+                    fill: false,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.9,
+                    pointRadius: 0,
+                    fill: true,
+                }]
+            },
+            plugins: [ChartDataLabels],
+            options: {
+                aspectRatio: false,
+                responsive: true,
+                scales: {
+                    y: {
+                        max: maxTempScale,
+                        min: minTempScale,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            display: false, //this will remove only the label
+                        },
+                        grid: {
+                            display: false,
                         },
                     },
+                    x: {
+                        ticks: {
+                            // Include a dollar sign in the ticks
+                            callback: function (value, index, values) {
+                                return this.getLabelForValue(value) + ':00';
+                            },
+                        },
 
-                },
-            },
-
-            plugins: {
-                zoom: {
-                    pan: {
-                        mode: 'x',
-                        enabled: true
                     },
+                },
+
+                plugins: {
                     zoom: {
-                        wheel: {
-                            enabled: true,
-                            speed: 0.1,
+                        pan: {
+                            mode: 'x',
+                            enabled: true
                         },
-                        mode: 'x',
+                        zoom: {
+                            wheel: {
+                                enabled: true,
+                                speed: 0.1,
+                            },
+                            pinch: {
+                                enabled: true,
+                            },
+                            mode: 'x',
+                            limits: {
+                                x: { min: -10, max: 20, minRange: 5 },
+                            },
+                        },
+                    },
+                    datalabels: {
+                        color: '#000',
+                        align: 'end',
+                        offset: 10,
+                        formatter: function (value, context) {
+                            return context.chart.data.datasets[0].data[context.dataIndex] + '°';
+                        }
                     },
                 },
-                datalabels: {
-                    color: '#000',
-                    align: 'end',
-                    offset: 10,
-                    formatter: function (value, context) {
-                        return context.chart.data.datasets[0].data[context.dataIndex] + '°';
-                    }
-                },
             },
-        },
-    });
+        });
 
-    // myChart.zoom(1.5);
-
-    const hiddenTiles = document.querySelectorAll('.tile-hidden');
-    [...hiddenTiles].forEach(element => {
-        element.classList.add('tile-visible');
-        element.classList.remove('tile-hidden');
-    });
+        const hiddenTiles = document.querySelectorAll('.tile-hidden');
+        [...hiddenTiles].forEach(element => {
+            element.classList.add('tile-visible');
+            element.classList.remove('tile-hidden');
+        });
+        myChart.zoom(1.6);
+    } else {
+        myChart.data.datasets[0].data = temp;
+        myChart.options.scales.y.min = minTempScale;
+        myChart.options.scales.y.max = maxTempScale;
+        myChart.data.labels = hours;
+        myChart.update();
+    }
 };
