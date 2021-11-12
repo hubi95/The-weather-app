@@ -16,7 +16,8 @@ OWM API key is stored on server side as a cloud environment variable for securit
 
 You can search for city of your choice or use geolocation and see simple set of current weather data.
 I used Chart.js library to create chart to represent data for next 48h (you can scroll on it or pinch it with your fingers on mobile).
-Figma came in handy to prototype general look and some basic arrangement of elements so I can then implemented them later in CSS styles.
+
+From design side I can say that Figma came in handy to prototype general look and some basic arrangement of elements so I can then implemented them later in CSS styles.
 
 If you have any problems with data to load on screen, please disable any blockers on your browser, or use private mode if you don't want to disable blockers manualy :)
 
