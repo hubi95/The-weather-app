@@ -1,6 +1,6 @@
 ## The weather app
 ---
-<img src="https://dub01pap001files.storage.live.com/y4mETjwnqCX0RopSf20gDhZWZeSD7cOTD4mAYps4PhaGdiwREa_opiuTkW63ujsXHLUFtF0CNF3jtbp-5vJBJV1y2ANKL3PxpmCVUX_XtglT0kVUBK_yStavBeD5xtGPfVFfSic3d8TYTZwLkrl5gEdNH3OTSjj9Xm_F1cSmoeH9cAxzTLgEpkzcugfsEhA7TR7?width=1432&height=1213&cropmode=none" width="100%" height="auto" />
+<img src="https://dub01pap001files.storage.live.com/y4me6-MJJvF9kdwoKbVNojDWLi7nLs7d7ay1_VGtGts58IJoSWxhna2eU4n623j-o827Ydzl6UcDmbiYzj0G2Utolm4HWVo7Tut8NmnRAOjtfOe-zIWX6vQ0-z_VotchsbR-TEkwDyE4gXhgU11JpzsiA1F0qE558c-8z6PthRhJ_L1RRApWUz0U-X-I53TAe40?width=1357&height=1216&cropmode=none" width="100%" height="auto" />
 
 This project is a weather app based on Google Cloud Platform and OpenWeatherMap API.
 
